@@ -25,8 +25,7 @@ const config = {
   entry: {
     bg: './src/background-script/index.js',
     options: './src/options/index.js',
-    'ct-top': './src/content-scripts/top-frame/index.js',
-    ct: './src/content-scripts/all-frame/index.js',
+    ct: './src/content-script/index.js',
     popup: './src/popup/index.js'
   },
   output: {
