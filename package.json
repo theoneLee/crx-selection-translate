@@ -1,0 +1,47 @@
+{
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lmk123/vuex-boilerplate.git"
+  },
+  "scripts": {
+    "dev": "webpack --config build/webpack.config.js",
+    "build": "BUILD_TYPE=p npm run dev",
+    "lint": "eslint --ignore-pattern '/dist/' '**/*.{js,vue}'"
+  },
+  "dependencies": {
+    "vue": "1.0.26",
+    "lodash": "4.15.0"
+  },
+  "devDependencies": {
+    "babel-core": "6.14.0",
+    "babel-plugin-transform-runtime": "6.15.0",
+    "babel-preset-es2015": "6.14.0",
+
+    "babel-loader": "6.2.5",
+    "vue-loader": "8.5.2",
+    "vue-html-loader": "1.2.3",
+    "file-loader": "0.9.0",
+    "node-sass": "3.10.0",
+    "sass-loader": "4.0.2",
+    "css-loader": "0.25.0",
+    "style-loader": "0.13.1",
+    "copy-webpack-plugin": "3.0.1",
+    "clean-webpack-plugin": "0.1.10",
+    "html-webpack-plugin": "2.22.0",
+    "extract-text-webpack-plugin": "1.0.1",
+    "webpack": "1.13.2",
+
+    "eslint": "3.5.0",
+    "eslint-plugin-html": "1.5.2",
+    "eslint-config-standard": "6.0.1",
+    "eslint-plugin-promise": "2.0.1",
+    "eslint-plugin-standard": "2.0.0"
+  },
+  "author": "Mingkai Li <milk.lee@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lmk123/vuex-boilerplate/issues"
+  },
+  "homepage": "https://github.com/lmk123/vuex-boilerplate#readme"
+}
