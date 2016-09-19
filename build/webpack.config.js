@@ -43,10 +43,10 @@ const config = {
         loader: 'babel-loader'
       },
       {
-        test: /\.(woff2?|ttf|png|svg|eot)$/,
+        test: /\.woff2$/,
         loader: 'file-loader',
         query: {
-          // 内容脚本的 css 为了引用扩展里的字体等文件，需要在文件前加上下面的前缀
+          // 内容脚本的 css 为了引用扩展里的字体文件，需要在文件前加上下面的前缀
           // @see https://developer.chrome.com/extensions/manifest/web_accessible_resources
           // @see https://developer.chrome.com/extensions/i18n#overview-predefined
           // @see http://webpack.github.io/docs/configuration.html#output-publicpath

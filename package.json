@@ -2,7 +2,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lmk123/vuex-boilerplate.git"
+    "url": "git+https://github.com/Selection-Translator/crx-selection-translate.git"
   },
   "scripts": {
     "dev": "webpack --config build/webpack.config.js",
@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "vue": "1.0.26",
-    "lodash": "4.15.0"
+    "lodash": "4.15.0",
+    "chrome-call": "1.0.2",
+    "connect.io": "1.0.1",
+    "translation.js": "0.3.4",
+    "draggabilly": "2.1.1"
   },
   "devDependencies": {
     "babel-core": "6.14.0",
@@ -41,7 +45,7 @@
   "author": "Mingkai Li <milk.lee@qq.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lmk123/vuex-boilerplate/issues"
+    "url": "https://github.com/Selection-Translator/crx-selection-translate/issues"
   },
-  "homepage": "https://github.com/lmk123/vuex-boilerplate#readme"
+  "homepage": "https://github.com/Selection-Translator/crx-selection-translate#readme"
 }
