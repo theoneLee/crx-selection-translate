@@ -25,7 +25,12 @@
     <input type="button" value="input button">
   </p>
 
-  <iframe src="frame.html" frameborder="2"></iframe>
+  <script>
+    if (window.top === window.self) {
+      document.write('iframe')
+      document.write('<iframe src="dev.html" frameborder="2"></iframe>')
+    }
+  </script>
 
   <div style="height: 500px;">
     scroll down &darr;
