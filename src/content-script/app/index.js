@@ -29,8 +29,8 @@ class App extends Event {
     if (pos) {
       vueApp.btn = {
         show: true,
-        left: pos.left + (pos.width / 2),
-        top: pos.top + pos.height
+        left: pos.left + (pos.width / 2) + document.body.scrollLeft,
+        top: pos.top + pos.height + document.body.scrollTop
       }
       return
     }
@@ -56,8 +56,8 @@ class App extends Event {
     if (pos) {
       vueApp.win = {
         show: true,
-        left: pos.left,
-        top: pos.top
+        left: pos.left + document.body.scrollLeft,
+        top: pos.top + document.body.scrollTop
       }
       return
     }

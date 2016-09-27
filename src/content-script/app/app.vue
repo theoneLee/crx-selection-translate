@@ -85,6 +85,10 @@
   #__st-container__ {
     height: 0;
 
+    .__win__, .__translate-btn__ {
+      z-index: 9999999;
+    }
+
     .__translate-btn__ {
       position: absolute;
     }

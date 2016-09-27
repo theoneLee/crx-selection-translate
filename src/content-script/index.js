@@ -34,15 +34,28 @@ document.addEventListener('keyup', function (e) {
   }
 })
 
-// 鼠标 mouseup 时先隐藏，然后显示翻译按钮
-document.addEventListener('mouseup', function (e) {
+// 鼠标 mousedown 时隐藏 app
+document.addEventListener('mousedown', function (e) {
   // 不处理 container 内的 mouseup 事件
   // 这里不用 .contains() 方法的原因是此时 app 可能并没有初始化，所以 app.vueApp 可能是 undefined
+  // 没有在 appContainer 上阻止 mousedown 和 mouseup 事件传播是因为 Draggabilly 需要在 doucment 上注册事件来判断用户松开了鼠标
+  const appContainer = matchParent(e.target, '#__st-container__')
+  if (appContainer) return
+  app.hide()
+})
+
+// 鼠标 mouseup 时显示翻译按钮
+document.addEventListener('mouseup', function (e) {
   const appContainer = matchParent(e.target, '#__st-container__')
   if (appContainer) return
 
-  app.hide()
-  const sl = getSelection()
-  if (!sl) return
-  app.showBtn(sl.rect)
+  // Chrome 会在 mousedown 事件产生时清除拖蓝，
+  // 但如果用户的鼠标正好点击在一个拖蓝上，
+  // 那么 Chrome 会在 mouseup 事件之后再清除拖蓝，
+  // 所以要在 mouseup 事件之后再读取网页上的拖蓝
+  window.setTimeout(function () {
+    const sl = getSelection()
+    if (!sl) return
+    app.showBtn(sl.rect)
+  }, 0)
 })
