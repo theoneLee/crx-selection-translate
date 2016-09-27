@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const path = require('path')
+const fs = require('fs')
 const IS_PRODUCTION = process.env.BUILD_TYPE === 'p'
 
 // https://github.com/kangax/html-minifier#options-quick-reference
@@ -62,20 +63,21 @@ const config = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader?sourceMap')
       }
     ]
   },
   vue: {
     loaders: {
-      css: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader'),
-      scss: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!sass-loader?sourceMap')
+      css: ExtractTextPlugin.extract('css-loader?sourceMap'),
+      scss: ExtractTextPlugin.extract('css-loader?sourceMap!sass-loader?sourceMap')
     }
   },
+  babel: JSON.parse(fs.readFileSync(path.resolve(__dirname, '../.babelrc'), { encoding: 'utf8' })),
   plugins: [
     new HtmlWebpackPlugin({
       title: '',
