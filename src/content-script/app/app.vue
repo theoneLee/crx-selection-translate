@@ -1,7 +1,7 @@
 <template>
   <div id="__st-container__">
     <div class="__translate-btn__" :style="btnStyle">译</div>
-    <div class="__win__" v-el:win>
+    <div class="__win__" ref="win">
       <div class="__win-header__"><span>固定</span><span @click="hideWin">关闭</span></div>
       <div>body</div>
     </div>
@@ -57,7 +57,7 @@
       winStyle: {
         deep: true,
         handler (style) {
-          Object.assign(this.$els.win.style, style)
+          Object.assign(this.$refs.win.style, style)
         }
       }
     },
@@ -68,8 +68,8 @@
       }
     },
 
-    ready () {
-      this._draggie = new Draggabilly(this.$els.win, {
+    mounted () {
+      this._draggie = new Draggabilly(this.$refs.win, {
         handle: '.__win-header__'
       })
     },

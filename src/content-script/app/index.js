@@ -3,6 +3,8 @@ import appConfig from './app.vue'
 import _noop from 'lodash/noop'
 import Event from '../../utils/Event'
 
+const AppConstructor = Vue.extend(appConfig)
+
 class App extends Event {
   constructor () {
     super()
@@ -11,11 +13,11 @@ class App extends Event {
 
   _init () {
     this._init = _noop
-    const vueApp = new (Vue.extend(appConfig))({
-      el: document.createElement('div')
+    const placeholder = document.createElement('div')
+    document.documentElement.insertBefore(placeholder, document.body)
+    this.vueApp = new AppConstructor({
+      el: placeholder
     })
-    vueApp.$after('head')
-    this.vueApp = vueApp
     this.emit('initialized')
   }
 
@@ -27,10 +29,11 @@ class App extends Event {
     this._init()
     const { vueApp } = this
     if (pos) {
+      const { scrollLeft, scrollTop } = document.body
       vueApp.btn = {
         show: true,
-        left: pos.left + (pos.width / 2) + document.body.scrollLeft,
-        top: pos.top + pos.height + document.body.scrollTop
+        left: pos.left + (pos.width / 2) + scrollLeft,
+        top: pos.top + pos.height + scrollTop
       }
       return
     }
