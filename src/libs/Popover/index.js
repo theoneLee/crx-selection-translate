@@ -1,6 +1,7 @@
+// todo 将这个功能抽离出来改造成一个构造函数，方便日后开发 demo 页（给没有安装划词翻译的用户展示一下划词翻译的划词功能）
 import app from './app'
-import getSelection from '../utils/selection'
-import matchParent from '../utils/matchParent'
+import getSelection from '../../utils/selection'
+import matchParent from '../../utils/matchParent'
 
 app.once('initialized', function () {
   const { $el: appContainer } = app.vueApp
@@ -29,7 +30,7 @@ app.once('initialized', function () {
 
 // 按下 ESC 键时隐藏
 document.addEventListener('keyup', function (e) {
-  if (27 === e.keyCode) { // keyCode 虽然已被弃用，但目前几乎没有浏览器实现了 e.key
+  if (e.keyCode === 27) { // keyCode 虽然已被弃用，但目前几乎没有浏览器实现了 e.key
     app.hide()
   }
 })

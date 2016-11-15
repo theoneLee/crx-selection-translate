@@ -24,10 +24,10 @@ const htmlMinifierOptions = {
 
 const config = {
   entry: {
-    bg: './src/background-script/index.js',
-    options: './src/options/index.js',
-    ct: './src/content-script/index.js',
-    popup: './src/popup/index.js'
+    bg: './src/scripts/background/index.js',
+    options: './src/scripts/options/index.js',
+    ct: './src/scripts/content/index.js',
+    popup: './src/scripts/popup/index.js'
   },
   output: {
     path: './dist',
@@ -38,12 +38,12 @@ const config = {
       {
         test: /\.js$/,
         include: [
-          path.resolve(__dirname, '../src')
+          path.resolve(__dirname, './src')
         ],
         loader: 'babel-loader'
       },
       {
-        test: /\.woff2$/,
+        test: /\.woff2(\?\S*)?$/,
         loader: 'file-loader',
         query: {
           // 内容脚本的 css 为了引用扩展里的字体文件，需要在文件前加上下面的前缀
@@ -77,7 +77,7 @@ const config = {
       scss: ExtractTextPlugin.extract('css-loader?sourceMap!sass-loader?sourceMap')
     }
   },
-  babel: JSON.parse(fs.readFileSync(path.resolve(__dirname, '../.babelrc'), { encoding: 'utf8' })),
+  babel: JSON.parse(fs.readFileSync(path.resolve(__dirname, './.babelrc'), { encoding: 'utf8' })),
   plugins: [
     new HtmlWebpackPlugin({
       title: '',
@@ -92,7 +92,7 @@ const config = {
       minify: IS_PRODUCTION ? htmlMinifierOptions : false
     }),
     new CleanWebpackPlugin(['dist'], {
-      root: path.resolve(__dirname, '../')
+      root: path.resolve(__dirname, './')
     }),
     new CopyWebpackPlugin([{ from: 'static' }]),
     new ExtractTextPlugin('[name].css'),

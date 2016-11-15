@@ -5,8 +5,8 @@
     "url": "git+https://github.com/Selection-Translator/crx-selection-translate.git"
   },
   "scripts": {
-    "dev": "webpack --config build/webpack.config.js",
-    "build": "BUILD_TYPE=p npm run dev",
+    "dev": "webpack",
+    "build": "npm run lint && BUILD_TYPE=p npm run dev",
     "lint": "eslint --ignore-pattern '/dist/' '**/*.{js,vue}'"
   },
   "dependencies": {

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import appConfig from './app.vue'
 import _noop from 'lodash/noop'
-import Event from '../../utils/Event'
+import Event from '../../../utils/Event'
 
 const AppConstructor = Vue.extend(appConfig)
 
