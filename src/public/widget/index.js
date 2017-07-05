@@ -10,6 +10,10 @@ import widgetMixin from './vue-st';
 import locales from '../locales';
 import template from './template.html';
 
+
+import VueResource from 'vue-resource'
+Vue.use(VueResource);//引入vueResource
+
 // 去掉 locales 里的 *-* 类语种，除了 zh-CN、zh-TW 和 zh-HK（百度翻译里的粤语）
 const translateLocales = [];
 
@@ -134,6 +138,7 @@ export default Vue.extend( {
       target.textContent = '已复制';
       setTimeout( ()=> target.textContent = original , 2000 );
     } ,
+    //todo 增加一个与后台api交互的函数
 
     /**
      * 播放语音
